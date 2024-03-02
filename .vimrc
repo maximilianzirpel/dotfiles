@@ -1,29 +1,41 @@
+" Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 
-" Overall look and feel
-set number
-set relativenumber
-set cursorline
-set laststatus=2
-set statusline=%f
+" Turn syntax highlighting on.
+syntax on
 
-" Default indentation and textwidth
-set colorcolumn=+1
-set textwidth=160
-set tabstop=4
+" Add numbers to each line on the left-hand side.
+set number
+" Add relative numbers to each line on the left-hand side.
+set relativenumber
+" Highlight cursor line underneath the cursor horizontally.
+set cursorline
+" Always display statusline.
+set laststatus=2
+" Format of the statusline.
+set statusline=%f\ -\ FileType:\ %y
+set statusline+=%=
+set statusline+=%l\ /\ %L
+
+
+" Set shift width to 4 spaces.
 set shiftwidth=4
+" Set tab width to 4 columns.
+set tabstop=4
+" Use space characters instead of tabs.
 set expandtab
+" Draw column relative to textwidth.
+set colorcolumn=+1
+" Control wrap width.
+set textwidth=160
+" Turn on auto-indent.
 set autoindent
 
-" Search settings
+" While searching though a file incrementally highlight matching characters as you type.
 set incsearch
 
-" Highlighting
-syntax on
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 let w:xws = call('matchadd', ['ExtraWhitespace', '\s\+$'])
-" highlight SquishedCommas ctermbg=red guibg=red
-" let w:sc = call('matchadd', ['SquishedCommas', '\d\@!,\(\s|\d\)\@!\($\)\@!'])
 highlight UnknownPlaceholder ctermbg=red guibg=red
 let w:uph = call('matchadd', ['UnknownPlaceholder', '\([XYZ?]\)\1\+'])
 
